@@ -1,7 +1,9 @@
 <template>
   <nav class="nav w-full flex flex-wrap items-center justify-between px-4">
     <div class="flex items-center mr-6 py-3">
-      <span class="font-semibold text-xl tracking-tight">Tail recipe</span>
+      <span class="font-semibold text-xl tracking-tight">
+        <router-link to="/">Tail recipe</router-link>
+      </span>
     </div>
 
     <input class="menu-btn hidden" type="checkbox" id="menu-btn" />

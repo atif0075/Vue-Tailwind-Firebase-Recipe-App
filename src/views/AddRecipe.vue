@@ -1,4 +1,3 @@
-<!-- component -->
 <template>
   <section class="flex flex-col sm:flex-row p-3 justify-between items-center">
     <main class="py-5 w-full md:w-2/4 px-2 md:px-12">
@@ -21,6 +20,7 @@
           Description
         </label>
         <textarea
+          maxlength="147"
           placeholder="Description of your recipe"
           class="w-full p-3 mt-1 outline-none text-sm border-2 h-44 text-gray-800 border-gray-200 rounded"
         ></textarea>
