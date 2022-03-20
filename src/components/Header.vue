@@ -1,0 +1,176 @@
+<template>
+  <nav class="nav w-full flex flex-wrap items-center justify-between px-4">
+    <div class="flex items-center mr-6 py-3">
+      <span class="font-semibold text-xl tracking-tight">Tail recipe</span>
+    </div>
+
+    <input class="menu-btn hidden" type="checkbox" id="menu-btn" />
+    <label
+      class="menu-icon block cursor-pointer lg:hidden px-2 py-4 relative select-none"
+      for="menu-btn"
+    >
+      <span id="bar" class="navicon bg-dark flex items-center relative"></span>
+    </label>
+
+    <ul
+      class="menu border-b lg:border-none flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
+    >
+      <li class="border-t lg:border-none">
+        <button class="border-2 bg-dark p-1 my-2 border-yellow">
+          <router-link
+            class="flex items-center font-bold text-yellow pr-2"
+            to="/addrecipe"
+            ><svg
+              class="w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              ></path>
+            </svg>
+            Recipe
+          </router-link>
+        </button>
+      </li>
+      <li class="border-t lg:border-none cursor-pointer">
+        <router-link
+          @click="hide"
+          to="/"
+          class="block lg:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
+          >Home</router-link
+        >
+      </li>
+      <li class="border-t lg:border-none cursor-pointer">
+        <router-link
+          @click="hide"
+          to="/global"
+          class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
+          >Global</router-link
+        >
+      </li>
+      <li class="border-t lg:border-none cursor-pointer">
+        <router-link
+          @click="hide"
+          to="/profile"
+          class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
+          >View Profile</router-link
+        >
+      </li>
+
+      <li class="border-t lg:border-none cursor-pointer">
+        <router-link
+          @click="hide"
+          to="/signin"
+          class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
+          >Sign in</router-link
+        >
+      </li>
+      <li class="border-t lg:border-none cursor-pointer">
+        <button
+          @click="handleClick"
+          class="inline-block p-2 text-white bg-red border border-red rounded-full hover:bg-transparent hover:text-red active:text-dark-red"
+        >
+          <abbr title="Signout">
+            <svg
+              class="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              /></svg
+          ></abbr>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script lang="ts" setup>
+import { useStore } from "vuex";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+let store = useStore();
+let router = useRouter();
+let error = ref(null);
+
+let handleClick = () => {
+  try {
+    setTimeout(() => {
+      router.push("/signin");
+      store.dispatch("signOut");
+    }, 700);
+    hide();
+  } catch (err: any) {
+    error.value = err;
+  }
+};
+
+function hide() {
+  let element: HTMLElement = document.getElementById("bar") as HTMLElement;
+  element.click();
+}
+</script>
+<style>
+@media (max-width: 1024px) {
+  .navicon {
+    width: 1.125em;
+    height: 0.125em;
+  }
+
+  .navicon::before,
+  .navicon::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-out;
+    content: "";
+    background: #3d4852;
+  }
+
+  .navicon::before {
+    top: 5px;
+  }
+
+  .navicon::after {
+    top: -5px;
+  }
+
+  .menu-btn:not(:checked) ~ .menu {
+    display: none;
+  }
+
+  .menu-btn:checked ~ .menu {
+    display: block;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon::before {
+    transform: rotate(-45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon::after {
+    transform: rotate(45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon::before,
+  .menu-btn:checked ~ .menu-icon .navicon::after {
+    top: 0;
+  }
+}
+</style>
