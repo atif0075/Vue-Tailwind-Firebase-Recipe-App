@@ -1,6 +1,6 @@
-# template-vite-vue-ts-tailwind-jit
+# Vue Firebase Recipe App
 
-- **template of:** vite + vue + typescript
+- **template:** vite + vue + typescript
 - **tailwindcss:** `^2.2.19`
 
 ## Started
