@@ -63,7 +63,7 @@
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-red-500"
+              class="w-6 h-6 text-secondary-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -90,7 +90,7 @@
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="w-5 h-5 text-red"
+        class="w-5 h-5 text-secondary"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

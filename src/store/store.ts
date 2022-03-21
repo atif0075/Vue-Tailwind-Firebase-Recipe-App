@@ -6,8 +6,8 @@ export const store = createStore({
     error: false,
     recipes: [
       {
-        slug: "fettuccine-alfredo",
-        title: "Fettuccine Alfredo",
+        slug: "fettuccine",
+        title: "Fettuccine",
         description:
           "Tonkatsu (fried pork cutlets) is one of the most popular dishes in Japan. It's commonly served with a bottled sauce ",
         method:

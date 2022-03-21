@@ -49,7 +49,7 @@
               </div>
               <div class="flex justify-center items-center">
                 <button
-                  class="bg-yellow text-dark px-7 mt-5 py-2 border font-semibold"
+                  class="bg-secondary text-secondary px-7 mt-5 py-2 border font-semibold"
                 >
                   Submit
                 </button>

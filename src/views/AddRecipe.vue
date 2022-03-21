@@ -1,28 +1,30 @@
 <template>
-  <section class="flex flex-col sm:flex-row p-3 justify-between items-center">
+  <section
+    class="flex flex-col w-full sm:flex-row p-3 justify-between items-center"
+  >
     <main class="py-5 w-full md:w-2/4 px-2 md:px-12">
       <Drag />
     </main>
-    <main class="py-5 flex flex-col w-full md:w-2/4 px-2 md:px-12">
+    <main class="py-5 flex flex-col w-full md:w-2/4 px-2 md:px-8">
       <div>
-        <label class="block text-xs font-medium text-gray-50" for="email">
-          Title
-        </label>
+        <label class="block text-xs font-medium text-gray-50"> Title </label>
         <input
-          class="w-full p-3 outline-none text-gray-800 mt-1 text-sm border-2 border-gray-200 rounded"
-          id="email"
-          type="email"
-          placeholder="Title of your recipe"
+          maxlength="17"
+          v-model="title"
+          class="w-full p-3 outline-none text-dark mt-1 text-sm border-2 border-gray-200 rounded"
+          type="text"
+          placeholder="Title of your recipe (max 17 characters)"
         />
       </div>
       <div class="mt-2">
-        <label class="block text-xs font-medium text-gray-50" for="email">
+        <label class="block text-xs font-medium text-gray-50">
           Description
         </label>
         <textarea
-          maxlength="147"
-          placeholder="Description of your recipe"
-          class="w-full p-3 mt-1 outline-none text-sm border-2 h-44 text-gray-800 border-gray-200 rounded"
+          v-model="description"
+          maxlength="115"
+          placeholder="Description of your recipe (max 115 characters)"
+          class="w-full p-3 mt-1 outline-none text-sm border-2 h-44 text-dark border-gray-200 rounded"
         ></textarea>
       </div>
     </main>
@@ -37,22 +39,20 @@
       />
     </main>
     <button
-      class="bg-yellow px-6 py-2 border mt-5 text-dark font-semibold"
-      @click="getHTML"
+      class="bg-secondary px-6 py-2 border mt-5 text-primary border-dark font-semibold"
+      @click="addData"
     >
       Add Recipe
     </button>
-  </section>
-
-  <section>
-    <p><span v-html="rawHtml"></span></p>
   </section>
 </template>
 <script lang="ts" setup>
 import { QuillEditor, Quill } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { ref } from "vue";
 import Drag from "../components/Drag.vue";
+import { db } from "../firebase/config";
 
 var toolbarOptions = [
   ["bold", "italic", "underline"],
@@ -68,6 +68,25 @@ var toolbarOptions = [
 let rawHtml = ref(null);
 let getHTML = () => {
   let quill = new Quill("#editor").root.innerHTML;
-  rawHtml.value = quill;
+  return (rawHtml.value = quill);
+};
+let title = ref();
+let description = ref();
+
+let addData = async () => {
+  let slug = title.value;
+  let data = getHTML();
+  let slugs = slug.toString().replace(/\s+/g, "-").toLowerCase();
+  const Data = collection(db, "Recipe");
+  try {
+    await setDoc(doc(Data), {
+      title: title.value,
+      description: description.value,
+      slug: slugs,
+      method: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 </script>

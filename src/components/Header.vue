@@ -1,7 +1,7 @@
 <template>
   <nav class="nav w-full flex flex-wrap items-center justify-between px-4">
     <div class="flex items-center mr-6 py-3">
-      <span class="font-semibold text-xl tracking-tight">
+      <span class="font-semibold text-dark text-xl tracking-tight">
         <router-link to="/">Tail recipe</router-link>
       </span>
     </div>
@@ -11,16 +11,19 @@
       class="menu-icon block cursor-pointer lg:hidden px-2 py-4 relative select-none"
       for="menu-btn"
     >
-      <span id="bar" class="navicon bg-dark flex items-center relative"></span>
+      <span
+        id="bar"
+        class="navicon bg-primary flex items-center relative"
+      ></span>
     </label>
 
     <ul
-      class="menu border-b lg:border-none flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
+      class="menu border-b lg:border-none text-dark flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
     >
       <li class="border-t lg:border-none">
-        <button class="border-2 bg-dark p-1 my-2 border-yellow">
+        <button class="border-2 bg-primary p-1 my-2 border-secondary">
           <router-link
-            class="flex items-center font-bold text-yellow pr-2"
+            class="flex items-center font-bold text-secondary pr-2"
             to="/addrecipe"
             ><svg
               class="w-6"
@@ -44,7 +47,7 @@
         <router-link
           @click="hide"
           to="/"
-          class="block lg:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
+          class="block lg:inline-block px-4 py-3 no-underline text-grey-primaryest hover:text-grey-primaryer"
           >Home</router-link
         >
       </li>
@@ -52,31 +55,32 @@
         <router-link
           @click="hide"
           to="/global"
-          class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
-          >Global</router-link
+          class="block md:inline-block px-4 py-3 no-underline text-grey-primaryest hover:text-grey-primaryer"
+          >Global Chefs</router-link
         >
       </li>
       <li class="border-t lg:border-none cursor-pointer">
         <router-link
           @click="hide"
           to="/profile"
-          class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
-          >View Profile</router-link
+          class="block md:inline-block px-4 py-3 no-underline text-grey-primaryest hover:text-grey-primaryer"
+          >Profile</router-link
         >
       </li>
+   
 
       <li class="border-t lg:border-none cursor-pointer">
         <router-link
           @click="hide"
           to="/signin"
-          class="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"
+          class="block md:inline-block px-4 py-3 no-underline text-grey-primaryest hover:text-grey-primaryer"
           >Sign in</router-link
         >
       </li>
       <li class="border-t lg:border-none cursor-pointer">
         <button
           @click="handleClick"
-          class="inline-block p-2 text-white bg-red border border-red rounded-full hover:bg-transparent hover:text-red active:text-dark-red"
+          class="inline-block p-2 text-white bg-secondary border border-secondary rounded-full hover:bg-transparent hover:text-secondary active:text-secondary-secondary"
         >
           <abbr title="Signout">
             <svg
