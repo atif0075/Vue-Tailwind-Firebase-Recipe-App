@@ -51,10 +51,11 @@ import { QuillEditor, Quill } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { ref } from "vue";
+import { useStore } from "vuex";
 import Drag from "../components/Drag.vue";
 import { db } from "../firebase/config";
-
-var toolbarOptions = [
+const store = useStore();
+let toolbarOptions = [
   ["bold", "italic", "underline"],
   ["blockquote"],
   [{ header: 1 }, { header: 2 }],
@@ -68,8 +69,18 @@ var toolbarOptions = [
 let rawHtml = ref(null);
 let getHTML = () => {
   let quill = new Quill("#editor").root.innerHTML;
+  console.log(quill);
+
   return (rawHtml.value = quill);
 };
+
+let today: any = new Date();
+let dd = String(today.getDate()).padStart(2, "0");
+let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+let yyyy = today.getFullYear();
+
+today = dd + "-" + mm + "-" + yyyy;
+
 let title = ref();
 let description = ref();
 
@@ -84,6 +95,8 @@ let addData = async () => {
       description: description.value,
       slug: slugs,
       method: data,
+      date: today,
+      bg: store.state.img,
     });
   } catch (error) {
     console.log(error);

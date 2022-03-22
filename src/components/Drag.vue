@@ -5,6 +5,7 @@
     @dragleave.prevent="toggle_active()"
     @dragover.prevent
     @drop.prevent="drop"
+    v-on:drop="getLink"
     :class="{ 'bg-green-100 border-green-300 dark:bg-green-700': dragActive }"
     class="flex items-center justify-center w-full px-12 py-8 border-4 border-gray-300 border-dashed rounded dark:border-2"
   >
@@ -42,7 +43,8 @@
         >
         <input
           type="file"
-          @change="selectedFile"
+          v-on:change="selectedFile"
+          @change="getLink"
           name="file"
           id="file"
           max="1"
@@ -112,6 +114,12 @@
 import { ref } from "vue";
 import useDropZone from "../TS/dropZone";
 import { useStore } from "vuex";
+import {
+  getStorage,
+  ref as sRef,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 const store = useStore();
 const {
   dragActive,
@@ -121,4 +129,40 @@ const {
   clearDropped,
   selectedFile,
 } = useDropZone();
+
+const log = () => {
+  console.log("...args");
+};
+function getLink() {
+  let checker = false;
+  const storage = getStorage();
+
+  const storageRef = sRef(storage, "images/" + droppedFile.name);
+  const uploadTask = uploadBytesResumable(storageRef, droppedFile.value);
+
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log("Upload is " + progress + "% done");
+      checker = true;
+    },
+    (error: any) => {
+      console.log(error);
+
+      store.state.error = "Something went wrong";
+    },
+    () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log("File available at", downloadURL);
+        if (checker == true) {
+          store.state.img = downloadURL;
+        }
+      });
+    }
+  );
+}
+let print = () => {
+  console.log("printlink");
+};
 </script>

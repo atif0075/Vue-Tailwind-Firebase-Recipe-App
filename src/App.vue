@@ -20,7 +20,7 @@ let route = useRoute();
       v-if="route.name != '404'"
       class="bg-primary text-center lg:text-left"
     >
-      <div class="text-white text-center p-4">
+      <div class="text-dark text-center p-4">
         © 2021 Copyright:
         <a class="text-secondary" href="/">Tail recipe</a>
       </div>

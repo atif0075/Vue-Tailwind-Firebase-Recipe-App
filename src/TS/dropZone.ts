@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { store } from '../store/store'
+
 let zone: HTMLElement = document.querySelector("#zone") as HTMLElement;
 
 export default function useDropZone() {
@@ -16,18 +17,15 @@ export default function useDropZone() {
         console.log(event.dataTransfer.files[0]);
         if (!event.dataTransfer.files[0].type.match(/image.*/)) {
             store.state.error = true
-            console.log(store.state.error);
-            console.log('store.state.error');
-           
             droppedFile.value = null;
             dragActive.value = false;
-
             setTimeout(() => {
-        
                 store.state.error = false
             }, 3000);
+
         }
     };
+
 
     const selectedFile = (event: any) => {
         droppedFile.value = event.target.files[0];
@@ -36,14 +34,11 @@ export default function useDropZone() {
             store.state.error = true
             droppedFile.value = null;
             dragActive.value = false;
-    
-
-
             setTimeout(() => {
-               
                 store.state.error = false
             }, 3000);
         }
+
     };
 
     const clearDropped = () => {

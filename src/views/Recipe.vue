@@ -26,7 +26,7 @@
           <img
             class="absolute inset-0 object-cover object-top w-full h-full filter blur"
             :src="recipe.bg"
-            alt=""
+            :alt="recipe.title"
           />
         </div>
         <div class="mt-[-10%] w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto">
@@ -34,7 +34,7 @@
             <img
               class="w-full h-full absolute inset-0 object-cover"
               :src="recipe.bg"
-              alt=""
+              :alt="recipe.title"
             />
           </div>
         </div>
@@ -45,22 +45,9 @@
             {{ recipe.title }}
           </h1>
           <h2 class="mt-2 text-sm text-gray-500">
-            {{ recipe.by }}, {{ recipe.time }} ago
+           Posted by {{ recipe.by }} on {{ recipe.date }} 
           </h2>
           <div v-html="recipe.method" class="mt-6"></div>
-          <p>
-            Praesent ornare interdum gravida. Donec efficitur leo suscipit
-            aliquet pellentesque. In quis purus et dui mollis vulputate. Aenean
-            non faucibus felis. Phasellus non aliquet est, non dictum sem. In
-            hac habitasse platea dictumst. Integer vehicula elit ac libero
-            egestas ornare non sed dolor. Integer vulputate id est nec pulvinar.
-            Cras nec sollicitudin lacus, quis sagittis diam. Donec porta libero
-            ac lorem semper, eget porttitor quam fermentum. Ut tincidunt feugiat
-            sem, nec aliquam mi tincidunt non.
-          </p>
-          <p>
-            {{ recipe.method }}
-          </p>
         </article>
       </main>
     </section>
