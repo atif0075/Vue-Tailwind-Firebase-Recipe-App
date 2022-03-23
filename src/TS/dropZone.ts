@@ -7,7 +7,7 @@ export default function useDropZone() {
     const dragActive = ref(false);
     const droppedFile = ref(null);
     const toggle_active = () => {
-        if (droppedFile.value == null) {
+        if (droppedFile.value === null) {
             dragActive.value = !dragActive.value;
         }
     };
