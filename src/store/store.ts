@@ -39,7 +39,7 @@ const fetchData = async () => {
       obj["description"] = doc.data().description;
       obj["method"] = doc.data().method;
       obj["bg"] = doc.data().bg;
-      obj["time"] = doc.data().time;
+      obj["date"] = doc.data().date;
       obj["by"] = doc.data().by;
       store.state.recipes.push(obj);
 

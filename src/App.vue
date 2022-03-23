@@ -28,12 +28,12 @@ let route = useRoute();
   </main>
 </template>
 <style lang="postcss">
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;800;900&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+
 }
 *::selection {
   @apply bg-secondary text-primary;

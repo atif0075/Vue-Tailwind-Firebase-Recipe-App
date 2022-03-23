@@ -1,8 +1,11 @@
 <template>
   <nav class="nav w-full flex flex-wrap items-center justify-between px-4">
     <div class="flex items-center mr-6 py-3">
-      <span class="font-semibold text-dark text-xl tracking-tight">
-        <router-link to="/">Tail recipe</router-link>
+      <span class="font-black tracking-wider text-dark text-2xl">
+        <router-link class="flex" to="/">
+          <img class="w-8" src="../assets/food.svg" alt="vrecipe" />
+          <span class="px-2 block">Vrecipe</span>
+        </router-link>
       </span>
     </div>
 
@@ -21,25 +24,9 @@
       class="menu border-b lg:border-none text-dark flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
     >
       <li class="border-t lg:border-none">
-        <button class="border-2 bg-primary p-1 my-2 border-secondary">
-          <router-link
-            class="flex items-center font-bold text-secondary pr-2"
-            to="/addrecipe"
-            ><svg
-              class="w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              ></path>
-            </svg>
-            Recipe
+        <button class="px-2 border-2 border-blue-600">
+          <router-link to="/addrecipe">
+            <span class="text-2xl"> + </span>
           </router-link>
         </button>
       </li>
@@ -67,7 +54,6 @@
           >Profile</router-link
         >
       </li>
-   
 
       <li class="border-t lg:border-none cursor-pointer">
         <router-link

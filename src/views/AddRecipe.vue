@@ -69,17 +69,18 @@ let toolbarOptions = [
 let rawHtml = ref(null);
 let getHTML = () => {
   let quill = new Quill("#editor").root.innerHTML;
-  console.log(quill);
-
   return (rawHtml.value = quill);
 };
 
 let today: any = new Date();
 let dd = String(today.getDate()).padStart(2, "0");
-let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+let mm = String(today.getMonth() + 1).padStart(2, "0");
 let yyyy = today.getFullYear();
 
 today = dd + "-" + mm + "-" + yyyy;
+
+// 
+
 
 let title = ref();
 let description = ref();

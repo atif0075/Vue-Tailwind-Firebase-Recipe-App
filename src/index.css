@@ -5,4 +5,10 @@
   .label {
     @apply absolute left-0 -top-3.5 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5  peer-focus:text-sm;
   }
+  .btn {
+    @apply block w-full px-12 py-3 text-sm font-medium text-primary bg-secondary border border-secondary rounded sm:w-auto active:text-opacity-75 duration-300 ease-in-out hover:bg-transparent hover:text-white;
+  }
+  .btn-outline {
+    @apply block w-full px-12 py-3 text-sm font-medium text-white hover:text-primary border border-secondary rounded sm:w-auto duration-300 ease-in-out hover:bg-secondary;
+  }
 }
