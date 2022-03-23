@@ -16,30 +16,28 @@ let route = useRoute();
         <router-view />
       </main>
     </div>
-    <footer
-      v-if="route.name != '404'"
-      class="bg-primary text-center lg:text-left"
-    >
-      <div class="text-dark text-center p-4">
-        © 2021 Copyright:
-        <a class="text-secondary" href="/">Tail recipe</a>
-      </div>
-    </footer>
   </main>
+  <footer
+    v-if="route.name != '404'"
+    class="bg-primary text-center lg:text-left"
+  >
+    <div class="text-dark text-center p-4">
+      © 2021 Copyright:
+      <a class="text-secondary" href="/">Vrecipe</a>
+    </div>
+  </footer>
 </template>
 <style lang="postcss">
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
 }
 *::selection {
   @apply bg-secondary text-primary;
 }
 *::-webkit-scrollbar {
-  @apply bg-dark w-[0.5rem];
+  @apply bg-primary w-[0.1rem];
 }
 *::-webkit-scrollbar-thumb {
   @apply bg-secondary rounded-[50px];

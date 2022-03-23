@@ -30,6 +30,18 @@ const routes = [
         component: () => import('../views/Signup.vue'),
     },
     {
+        path: '/all-recipe',
+        name: 'AllRecipe',
+        meta: { title: 'All Recipe' },
+        component: () => import('../views/AllRecipe.vue'),
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        meta: { title: 'Profile' },
+        component: () => import('../views/Profile.vue'),
+    },
+    {
         path: '/addrecipe',
         name: 'AddRecipe',
         meta: { title: 'Add Recipe' },

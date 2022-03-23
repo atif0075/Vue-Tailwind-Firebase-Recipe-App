@@ -1,7 +1,7 @@
 <template>
   <nav class="nav w-full flex flex-wrap items-center justify-between px-4">
     <div class="flex items-center mr-6 py-3">
-      <span class="font-black tracking-wider text-dark text-2xl">
+      <span class="tracking-wider text-secondary text-2xl">
         <router-link class="flex" to="/">
           <img class="w-8" src="../assets/food.svg" alt="vrecipe" />
           <span class="px-2 block">Vrecipe</span>
@@ -24,11 +24,27 @@
       class="menu border-b lg:border-none text-dark flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
     >
       <li class="border-t lg:border-none">
-        <button class="px-2 border-2 border-blue-600">
-          <router-link to="/addrecipe">
-            <span class="text-2xl"> + </span>
-          </router-link>
-        </button>
+        <router-link to="/addrecipe">
+          <button
+            type="button"
+            class="px-3 py-2 bg-secondary rounded-md text-primary shadow-lg transform active:scale-75 transition-transform"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              ></path>
+            </svg>
+          </button>
+        </router-link>
       </li>
       <li class="border-t lg:border-none cursor-pointer">
         <router-link

@@ -45,9 +45,16 @@
             {{ recipe.title }}
           </h1>
           <h2 class="mt-2 text-sm text-gray-500">
-           Posted by {{ recipe.by }} on {{ recipe.date }} 
+            Posted by {{ recipe.by }} on {{ recipe.date }}
           </h2>
           <div v-html="recipe.method" class="mt-6"></div>
+          <div>
+            <button
+              class="text-white px-4 w-auto h-10 border border-secondary rounded-full hover:bg-secondary hover:text-primary active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
+            >
+              <span>Add to favorites </span>
+            </button>
+          </div>
         </article>
       </main>
     </section>
@@ -69,7 +76,6 @@ let recipe = computed(() => {
 });
 </script>
 <style scoped lang="postcss">
-
 p {
   @apply text-base mt-4;
 }
