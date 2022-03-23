@@ -29,7 +29,7 @@ export const store = createStore({
 const fetchData = async () => {
   const Data = collection(db, "Recipe");
   try {
-    console.log("hello");
+    
     const querySnapshot = await getDocs(Data);
     querySnapshot.forEach((doc) => {
 

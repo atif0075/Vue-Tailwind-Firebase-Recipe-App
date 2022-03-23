@@ -7,14 +7,14 @@ export default function useDropZone() {
     const dragActive = ref(false);
     const droppedFile = ref(null);
     const toggle_active = () => {
-        if (droppedFile.value == null) {
+        if (droppedFile.value === null) {
             dragActive.value = !dragActive.value;
         }
     };
 
     const drop = (event: any) => {
         droppedFile.value = event.dataTransfer.files[0];
-        console.log(event.dataTransfer.files[0]);
+        
         if (!event.dataTransfer.files[0].type.match(/image.*/)) {
             store.state.error = true
             droppedFile.value = null;
