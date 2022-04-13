@@ -12,6 +12,11 @@ const routes = [
         component: () => import('../views/About.vue'),
     },
     {
+        path: '/test',
+        meta: { title: 'Test' },
+        component: () => import('../views/Test.vue'),
+    },
+    {
         path: '/recipe/:slug',
         name: 'Recipe',
         meta: { title: 'recipe' },

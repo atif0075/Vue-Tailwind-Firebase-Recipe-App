@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@animxyz/vue3': ^0.6.6
   '@vitejs/plugin-vue': ^1.2.3
   '@vue/compiler-sfc': ^3.2.31
   '@vueup/vue-quill': ^1.0.0-beta.8
@@ -14,6 +15,7 @@ specifiers:
   vuex: ^4.0.2
 
 dependencies:
+  '@animxyz/vue3': 0.6.6_vue@3.2.31
   '@vue/compiler-sfc': 3.2.31
   '@vueup/vue-quill': 1.0.0-beta.8_vue@3.2.31
   firebase: 9.6.9
@@ -29,6 +31,20 @@ devDependencies:
   vue-tsc: 0.0.24
 
 packages:
+
+  /@animxyz/core/0.6.6:
+    resolution: {integrity: sha512-NtAA/G0Gq3hzAiL6yuE/4U8IgHMPUl3MxbWUbhO443T9UCsf9rBY94P5aK79Zd+/529FeoNdDphIOcOZLsI2sA==}
+    dev: false
+
+  /@animxyz/vue3/0.6.6_vue@3.2.31:
+    resolution: {integrity: sha512-ljHz97eNJMBLA2qVX3UDFHQbwIVKFUbKb6w6QbKUrkITY8oMwBz08ZYTYJguSUERXbpazftMSiaHsgRVnEbV/Q==}
+    peerDependencies:
+      vue: ^3.0.4
+    dependencies:
+      '@animxyz/core': 0.6.6
+      clsx: 1.1.1
+      vue: 3.2.31
+    dev: false
 
   /@babel/code-frame/7.16.7:
     resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
@@ -762,7 +778,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.20.2
-      caniuse-lite: 1.0.30001319
+      caniuse-lite: 1.0.30001320
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -811,7 +827,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001319
+      caniuse-lite: 1.0.30001320
       electron-to-chromium: 1.4.88
       escalade: 3.1.1
       node-releases: 2.0.2
@@ -850,8 +866,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite/1.0.30001319:
-    resolution: {integrity: sha512-xjlIAFHucBRSMUo1kb5D4LYgcN1M45qdKP++lhqowDpwJwGkpIRTt5qQqnhxjj1vHcI7nrJxWhCC1ATrCEBTcw==}
+  /caniuse-lite/1.0.30001320:
+    resolution: {integrity: sha512-MWPzG54AGdo3nWx7zHZTefseM5Y1ccM7hlQKHRqJkPozUaw3hNbBTMmLn16GG2FUzjR13Cr3NPfhIieX5PzXDA==}
     dev: true
 
   /chainsaw/0.1.0:
@@ -903,6 +919,11 @@ packages:
   /clone/2.1.2:
     resolution: {integrity: sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=}
     engines: {node: '>=0.8'}
+    dev: false
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert/1.9.3:

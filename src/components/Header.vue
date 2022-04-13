@@ -15,19 +15,21 @@
       for="menu-btn"
     >
       <span
+        @click="bar = !bar"
         id="bar"
         class="navicon bg-primary flex items-center relative"
       ></span>
     </label>
 
-    <ul
-      class="menu border-b lg:border-none text-dark flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
+    <XyzTransitionGroup
+      xyz="fade left-100% duration-5"
+      class="menu bg-primary lg:bg-transparent lg:border-none text-dark flex justify-end items-center list-reset m-0 w-full lg:w-auto absolute z-50 left-0 lg:static top-14"
     >
-      <li class="border-t lg:border-none">
+      <li v-if="bar" class="px-4">
         <router-link to="/addrecipe">
           <button
             type="button"
-            class="px-3 py-2 bg-secondary rounded-md text-primary shadow-lg transform active:scale-75 transition-transform"
+            class="btn flex justify-center items-center px-3 py-2"
           >
             <svg
               class="w-6 h-6"
@@ -46,7 +48,7 @@
           </button>
         </router-link>
       </li>
-      <li class="border-t lg:border-none cursor-pointer">
+      <li v-if="bar" class="cursor-pointer">
         <router-link
           @click="hide"
           to="/"
@@ -54,7 +56,7 @@
           >Home</router-link
         >
       </li>
-      <li class="border-t lg:border-none cursor-pointer">
+      <li v-if="bar" class="cursor-pointer">
         <router-link
           @click="hide"
           to="/global"
@@ -62,7 +64,7 @@
           >Global Chefs</router-link
         >
       </li>
-      <li class="border-t lg:border-none cursor-pointer">
+      <li v-if="bar" class="cursor-pointer">
         <router-link
           @click="hide"
           to="/profile"
@@ -71,7 +73,7 @@
         >
       </li>
 
-      <li class="border-t lg:border-none cursor-pointer">
+      <li v-if="bar" class="cursor-pointer">
         <router-link
           @click="hide"
           to="/signin"
@@ -79,7 +81,7 @@
           >Sign in</router-link
         >
       </li>
-      <li class="border-t lg:border-none cursor-pointer">
+      <li v-if="bar" class="cursor-pointer">
         <button
           @click="handleClick"
           class="inline-block p-2 text-white bg-secondary border border-secondary rounded-full hover:bg-transparent hover:text-secondary active:text-secondary-secondary"
@@ -101,7 +103,7 @@
           ></abbr>
         </button>
       </li>
-    </ul>
+    </XyzTransitionGroup>
   </nav>
 </template>
 
@@ -112,7 +114,16 @@ import { useRouter } from "vue-router";
 let store = useStore();
 let router = useRouter();
 let error = ref(null);
-
+let show = ref(false);
+let bar = ref(false);
+if (window.innerWidth >= 1024) {
+  bar.value = true;
+}
+window.onresize = () => {
+  if (window.innerWidth >= 1024) {
+    bar.value = true;
+  }
+};
 let handleClick = () => {
   try {
     setTimeout(() => {
@@ -180,5 +191,8 @@ function hide() {
   .menu-btn:checked ~ .menu-icon .navicon::after {
     top: 0;
   }
+}
+li {
+  list-style: none;
 }
 </style>

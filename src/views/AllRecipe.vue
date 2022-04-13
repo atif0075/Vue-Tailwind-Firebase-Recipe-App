@@ -1,5 +1,7 @@
 <template>
-  <section
+  <XyzTransitionGroup
+    appear
+    xyz="fade duration-10 appear-front-3 small-3 appear-small-0 stagger-2 out-stagger-0"
     class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-3 sm:px-0 py-10 gap-4"
   >
     <main v-for="items in store.state.recipes" :key="items">
@@ -28,8 +30,7 @@
         </article>
       </router-link>
     </main>
-    
-  </section>
+  </XyzTransitionGroup>
 </template>
 
 <script lang="ts" setup>
