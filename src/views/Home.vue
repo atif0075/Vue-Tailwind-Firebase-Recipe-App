@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 import { onMounted } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
